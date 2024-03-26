@@ -52,4 +52,8 @@ public class RemedyDTO {
     public String getDescription() {
         return description;
     }
+
+    public ManufacturerDTO getManufacturerDTO() {
+        return manufacturerDTO;
+    }
 }
