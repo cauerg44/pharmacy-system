@@ -2,6 +2,8 @@ package com.project.dev.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,6 +16,9 @@ public class Manufacturer {
     private String name;
     private String address;
     private Integer shipmentDate;
+
+    @OneToMany(mappedBy = "manufacturer")
+    private List<Remedy> remedies = new ArrayList<>();
 
     public Manufacturer() {
     }
@@ -55,6 +60,10 @@ public class Manufacturer {
 
     public void setShipmentDate(Integer shipmentDate) {
         this.shipmentDate = shipmentDate;
+    }
+
+    public List<Remedy> getRemedies() {
+        return remedies;
     }
 
     @Override

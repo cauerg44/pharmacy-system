@@ -19,6 +19,10 @@ public class Remedy {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
+    private Manufacturer manufacturer;
+
     public Remedy() {
     }
 

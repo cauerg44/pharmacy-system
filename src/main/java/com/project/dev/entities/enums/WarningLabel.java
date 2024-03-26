@@ -4,5 +4,5 @@ public enum WarningLabel {
 
     NORMAL,
     MEDIUM,
-    STRONG;
+    HIGH;
 }
