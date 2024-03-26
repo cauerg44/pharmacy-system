@@ -10,7 +10,7 @@ public class RemedyDTO {
     private WarningLabel warningLabel;
     private Double price;
     private String description;
-    private ManufacturerDTO manufacturerDTO;
+    private ManufacturerDTO manufacturer;
 
     public RemedyDTO() {
     }
@@ -21,7 +21,7 @@ public class RemedyDTO {
         this.warningLabel = warningLabel;
         this.price = price;
         this.description = description;
-        this.manufacturerDTO = manufacturerDTO;
+        this.manufacturer = manufacturerDTO;
     }
 
     public RemedyDTO(Remedy obj) {
@@ -30,7 +30,9 @@ public class RemedyDTO {
         warningLabel = obj.getWarningLabel();
         price = obj.getPrice();
         description = obj.getDescription();
-        manufacturerDTO = new ManufacturerDTO(obj.getManufacturer());
+        if (obj.getManufacturer() != null) {
+            manufacturer = new ManufacturerDTO(obj.getManufacturer());
+        }
     }
 
     public Long getId() {
@@ -53,7 +55,7 @@ public class RemedyDTO {
         return description;
     }
 
-    public ManufacturerDTO getManufacturerDTO() {
-        return manufacturerDTO;
+    public ManufacturerDTO getManufacturer() {
+        return manufacturer;
     }
 }
