@@ -3,7 +3,10 @@ package com.project.dev.entities;
 import com.project.dev.entities.enums.WarningLabel;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "remedies")
@@ -22,6 +25,9 @@ public class Remedy {
     @ManyToOne
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
+
+    @OneToMany(mappedBy = "id.remedy")
+    private Set<StockRemedy> stock = new HashSet<>();
 
     public Remedy() {
     }
@@ -74,6 +80,22 @@ public class Remedy {
         this.description = description;
     }
 
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public Set<StockRemedy> getStock() {
+        return stock;
+    }
+
+    public List<Sale> getSales() {
+        return stock.stream().map(obj -> obj.getSale()).toList();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,3 +109,4 @@ public class Remedy {
         return Objects.hash(id);
     }
 }
+
