@@ -2,7 +2,6 @@ package com.project.dev.dto;
 
 import com.project.dev.entities.Remedy;
 import com.project.dev.entities.enums.WarningLabel;
-import jakarta.persistence.Column;
 
 public class RemedyDTO {
 
@@ -11,16 +10,18 @@ public class RemedyDTO {
     private WarningLabel warningLabel;
     private Double price;
     private String description;
+    private ManufacturerDTO manufacturerDTO;
 
     public RemedyDTO() {
     }
 
-    public RemedyDTO(Long id, String name, WarningLabel warningLabel, Double price, String description) {
+    public RemedyDTO(Long id, String name, WarningLabel warningLabel, Double price, String description, ManufacturerDTO manufacturerDTO) {
         this.id = id;
         this.name = name;
         this.warningLabel = warningLabel;
         this.price = price;
         this.description = description;
+        this.manufacturerDTO = manufacturerDTO;
     }
 
     public RemedyDTO(Remedy obj) {
@@ -29,6 +30,7 @@ public class RemedyDTO {
         warningLabel = obj.getWarningLabel();
         price = obj.getPrice();
         description = obj.getDescription();
+        manufacturerDTO = new ManufacturerDTO(obj.getManufacturer());
     }
 
     public Long getId() {
