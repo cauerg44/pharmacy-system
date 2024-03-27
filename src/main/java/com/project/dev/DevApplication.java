@@ -7,17 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-public class DevApplication implements CommandLineRunner {
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+public class DevApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DevApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println(passwordEncoder.encode("2024"));
-	}
+
 }
