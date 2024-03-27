@@ -45,4 +45,11 @@ public class RemedyController {
         dto = remedyService.update(id, dto);
         return ResponseEntity.ok(dto);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        remedyService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
+
