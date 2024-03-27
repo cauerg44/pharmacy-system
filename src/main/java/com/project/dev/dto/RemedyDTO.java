@@ -2,12 +2,19 @@ package com.project.dev.dto;
 
 import com.project.dev.entities.Remedy;
 import com.project.dev.entities.enums.WarningLabel;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public class RemedyDTO {
 
     private Long id;
+
+    @NotBlank
     private String name;
     private WarningLabel warningLabel;
+
+    @Positive(message = "Price must be positive")
     private Double price;
     private String description;
     private ManufacturerDTO manufacturer;

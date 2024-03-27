@@ -45,4 +45,8 @@ public class StockRemedyDTO {
     public String getDescription() {
         return description;
     }
+
+    public Double getSubTotal() {
+        return price * quantity;
+    }
 }

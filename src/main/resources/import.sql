@@ -22,6 +22,14 @@ INSERT INTO users (name, email, birth_date, password) VALUES ('Cauê Garcia', 'c
 INSERT INTO users (name, email, birth_date, password) VALUES ('Emanuele Sacramento', 'manu@gmail.com', '1985-02-19', '2024');
 INSERT INTO users (name, email, birth_date, password) VALUES ('Ana Cláudia', 'ataide@gmail.com', '2005-05-03', '2024');
 
+INSERT INTO roles (authority) VALUES ('CLIENT');
+INSERT INTO roles (authority) VALUES ('PHARMACEUTICAL');
+
+INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 1);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
+INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
+
 INSERT INTO sales (moment, sale_status, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2024-01-13T19:45:00Z', 0, 1);
 INSERT INTO sales (moment, sale_status, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2024-02-15T19:45:00Z', 1, 2);
 INSERT INTO sales (moment, sale_status, user_id) VALUES (TIMESTAMP WITH TIME ZONE '2024-03-10T19:45:00Z', 2, 3);
