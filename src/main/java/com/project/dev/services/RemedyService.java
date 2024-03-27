@@ -7,11 +7,16 @@ import com.project.dev.entities.Remedy;
 import com.project.dev.repositories.ManufacturerRepository;
 import com.project.dev.repositories.RemedyRepository;
 import com.project.dev.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class RemedyService {
@@ -41,6 +46,19 @@ public class RemedyService {
         copyDtotoEntity(dto, remedy);
         remedy = remedyRepository.save(remedy);
         return new RemedyDTO(remedy);
+    }
+
+    @Transactional
+    public RemedyDTO update(Long id, RemedyDTO dto) {
+        try {
+            Remedy obj = remedyRepository.getReferenceById(id);
+            copyDtotoEntity(dto, obj);
+            obj = remedyRepository.save(obj);
+            return new RemedyDTO(obj);
+        }
+        catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Resource not found.");
+        }
     }
 
     private void copyDtotoEntity(RemedyDTO dto, Remedy entity) {

@@ -39,4 +39,10 @@ public class RemedyController {
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<RemedyDTO> update(@PathVariable Long id, @Valid @RequestBody RemedyDTO dto) {
+        dto = remedyService.update(id, dto);
+        return ResponseEntity.ok(dto);
+    }
 }
